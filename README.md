@@ -1,14 +1,16 @@
+[WIP]This is a lite version of rpcx, aim to compatible with Go 1.10.8
+
 <a href="https://rpcx.io/"><img height="160" src="http://rpcx.io/logos/rpcx-logo-text.png"></a>
 
 Official site: [http://rpcx.io](http://rpcx.io/)
 
-[![License](https://img.shields.io/:license-apache%202-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![GoDoc](https://godoc.org/github.com/smallnest/rpcx?status.png)](http://godoc.org/github.com/smallnest/rpcx)  [![travis](https://travis-ci.org/smallnest/rpcx.svg?branch=master)](https://travis-ci.org/smallnest/rpcx) [![Go Report Card](https://goreportcard.com/badge/github.com/smallnest/rpcx)](https://goreportcard.com/report/github.com/smallnest/rpcx) [![coveralls](https://coveralls.io/repos/smallnest/rpcx/badge.svg?branch=master&service=github)](https://coveralls.io/github/smallnest/rpcx?branch=master) [![QQ2群](https://img.shields.io/:QQ2群-670248151-blue.svg)](_documents/rpcx_dev_qq2.png) [![QQ群(已满)](https://img.shields.io/:QQ群(已满)-398044387-blue.svg)](_documents/rpcx_dev_qq.png) 
+[![License](https://img.shields.io/:license-apache%202-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![GoDoc](https://godoc.org/github.com/elvinchan/rpcx?status.png)](http://godoc.org/github.com/elvinchan/rpcx)  [![travis](https://travis-ci.org/elvinchan/rpcx.svg?branch=master)](https://travis-ci.org/elvinchan/rpcx) [![Go Report Card](https://goreportcard.com/badge/github.com/elvinchan/rpcx)](https://goreportcard.com/report/github.com/elvinchan/rpcx) [![coveralls](https://coveralls.io/repos/elvinchan/rpcx/badge.svg?branch=master&service=github)](https://coveralls.io/github/elvinchan/rpcx?branch=master) [![QQ2群](https://img.shields.io/:QQ2群-670248151-blue.svg)](_documents/rpcx_dev_qq2.png) [![QQ群(已满)](https://img.shields.io/:QQ群(已满)-398044387-blue.svg)](_documents/rpcx_dev_qq.png) 
 
 ## Announce
 
-A tcpdump-like tool added: [rpcxdump](https://github.com/smallnest/rpcxdump)。 You can use it to debug communications between rpcx services and clients.
+A tcpdump-like tool added: [rpcxdump](https://github.com/elvinchan/rpcxdump)。 You can use it to debug communications between rpcx services and clients.
 
-![](https://github.com/smallnest/rpcxdump/blob/master/snapshoot.png)
+![](https://github.com/elvinchan/rpcxdump/blob/master/snapshoot.png)
 
 
 ## Cross-Languages
@@ -16,7 +18,7 @@ you can use other programming languages besides Go to access rpcx services.
 
 - **rpcx-gateway**: You can write clients in any programming languages to call rpcx services via [rpcx-gateway](https://github.com/rpcxio/rpcx-gateway)
 - **http invoke**: you can use the same http requests to access rpcx gateway
-- **Java Services/Clients**: You can use [rpcx-java](https://github.com/smallnest/rpcx-java) to implement/access rpcx servies via raw protocol.
+- **Java Services/Clients**: You can use [rpcx-java](https://github.com/elvinchan/rpcx-java) to implement/access rpcx servies via raw protocol.
 
 
 > If you can write Go methods, you can also write rpc services. It is so easy to write rpc applications with rpcx.
@@ -25,20 +27,18 @@ you can use other programming languages besides Go to access rpcx services.
 
 install the basic features:
 
-`go get -v github.com/smallnest/rpcx/...`
+`go get -v github.com/elvinchan/rpcx/...`
 
 
-If you want to use `ping`、`quic`、`kcp`、`utp` registry, use those tags to `go get` 、 `go build` or `go run`. For example, if you want to use all features, you can:
+If you want to use `ping`、`quic` registry, use those tags to `go get` 、 `go build` or `go run`. For example, if you want to use all features, you can:
 
 ```sh
-go get -v -tags "quic kcp ping utp" github.com/smallnest/rpcx/...
+go get -v -tags "quic kcp ping utp" github.com/elvinchan/rpcx/...
 ```
 
 **_tags_**:
 - **quic**: support quic transport
-- **kcp**: support kcp transport
 - **ping**: support network quality load balancing
-- **utp**: support utp transport
 
 ## Features
 rpcx is a RPC framework like [Alibaba Dubbo](http://dubbo.io/) and [Weibo Motan](https://github.com/weibocom/motan).
@@ -53,7 +53,7 @@ rpcx is a RPC framework like [Alibaba Dubbo](http://dubbo.io/) and [Weibo Motan]
 It contains below features
 - Support raw Go functions. There's no need to define proto files.
 - Pluggable. Features can be extended such as service discovery, tracing.
-- Support TCP, HTTP, [QUIC](https://en.wikipedia.org/wiki/QUIC) and [KCP](https://github.com/skywind3000/kcp)
+- Support TCP, HTTP, [QUIC](https://en.wikipedia.org/wiki/QUIC)
 - Support multiple codecs such as JSON, Protobuf, [MessagePack](https://msgpack.org/index.html) and raw bytes.
 - Service discovery. Support peer2peer, configured peers, [zookeeper](https://zookeeper.apache.org), [etcd](https://github.com/coreos/etcd), [consul](https://www.consul.io) and [mDNS](https://en.wikipedia.org/wiki/Multicast_DNS).
 - Fault tolerance：Failover, Failfast, Failtry.
@@ -71,7 +71,7 @@ It contains below features
 
 rpcx uses a binary protocol and platform-independent, which means you can develop services in other languages such as Java, python, nodejs, and you can use other prorgramming languages to invoke services developed in Go.
 
-There is a UI manager: [rpcx-ui](https://github.com/smallnest/rpcx-ui).
+There is a UI manager: [rpcx-ui](https://github.com/elvinchan/rpcx-ui).
 
 ## Performance
 
@@ -147,7 +147,7 @@ The below is a simple example.
 
 ## Contribute
 
-see [contributors](https://github.com/smallnest/rpcx/graphs/contributors).
+see [contributors](https://github.com/elvinchan/rpcx/graphs/contributors).
 
 Welcome to contribute:
 - submit issues or requirements
