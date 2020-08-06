@@ -28,11 +28,6 @@ func (s *Server) startGateway(network string, ln net.Listener) net.Listener {
 
 	rpcxLn := m.Match(rpcxPrefixByteMatcher())
 
-	if !s.DisableJSONRPC {
-		jsonrpc2Ln := m.Match(cmux.HTTP1HeaderField("X-JSONRPC-2.0", "true"))
-		go s.startJSONRPC2(jsonrpc2Ln)
-	}
-
 	if !s.DisableHTTPGateway {
 		httpLn := m.Match(cmux.HTTP1Fast())
 		go s.startHTTP1APIGateway(httpLn)

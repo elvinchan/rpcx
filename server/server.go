@@ -66,7 +66,6 @@ type Server struct {
 	writeTimeout       time.Duration
 	gatewayHTTPServer  *http.Server
 	DisableHTTPGateway bool // should disable http invoke or not.
-	DisableJSONRPC     bool // should disable json rpc or not.
 
 	serviceMapMu sync.RWMutex
 	serviceMap   map[string]*service
