@@ -18,6 +18,7 @@ type ConnFactoryFn func(c *Client, network, address string) (net.Conn, error)
 var ConnFactories = map[string]ConnFactoryFn{
 	"http": newDirectHTTPConn,
 	"quic": newDirectQuicConn,
+	"pipe": newDirectPipeConn,
 	"unix": newDirectConn,
 }
 
@@ -31,6 +32,8 @@ func (c *Client) Connect(network, address string) error {
 		conn, err = newDirectHTTPConn(c, network, address)
 	case "quic":
 		conn, err = newDirectQuicConn(c, network, address)
+	case "pipe":
+		conn, err = newDirectPipeConn(c, network, address)
 	case "unix":
 		conn, err = newDirectConn(c, network, address)
 	default:

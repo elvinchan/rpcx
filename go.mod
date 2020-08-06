@@ -4,6 +4,7 @@ go 1.13
 
 require (
 	github.com/ChimeraCoder/gojson v1.1.0
+	github.com/Microsoft/go-winio v0.4.14
 	github.com/abronan/valkeyrie v0.0.0-20200127174252-ef4277a138cd
 	github.com/apache/thrift v0.13.0
 	github.com/cenk/backoff v2.2.1+incompatible // indirect
