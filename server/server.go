@@ -61,6 +61,11 @@ var (
 
 // Server is rpcx server that use TCP or UDP.
 type Server struct {
+	seq        uint64
+	mu         sync.RWMutex
+	activeConn map[net.Conn]struct{}
+	doneChan   chan struct{}
+
 	ln                 net.Listener
 	readTimeout        time.Duration
 	writeTimeout       time.Duration
@@ -69,11 +74,6 @@ type Server struct {
 
 	serviceMapMu sync.RWMutex
 	serviceMap   map[string]*service
-
-	mu         sync.RWMutex
-	activeConn map[net.Conn]struct{}
-	doneChan   chan struct{}
-	seq        uint64
 
 	inShutdown int32
 	onShutdown []func(s *Server)

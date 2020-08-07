@@ -13,9 +13,9 @@ var (
 
 // ConsecCircuitBreaker is window sliding CircuitBreaker with failure threshold.
 type ConsecCircuitBreaker struct {
-	lastFailureTime  time.Time
 	failures         uint64
 	failureThreshold uint64
+	lastFailureTime  time.Time
 	window           time.Duration
 }
 
