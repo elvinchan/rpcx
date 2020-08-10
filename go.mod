@@ -8,13 +8,11 @@ require (
 	github.com/abronan/valkeyrie v0.0.0-20200127174252-ef4277a138cd
 	github.com/apache/thrift v0.13.0
 	github.com/cenk/backoff v2.2.1+incompatible // indirect
-	github.com/edwingeng/doublejump v0.0.0-20200219153503-7cfc0ed6e836
 	github.com/facebookgo/clock v0.0.0-20150410010913-600d898af40a // indirect
 	github.com/fatih/color v1.9.0
 	github.com/gogo/protobuf v1.2.0
 	github.com/golang/protobuf v1.3.2
 	github.com/grandcat/zeroconf v1.0.0
-	github.com/hashicorp/go-multierror v1.0.0
 	github.com/hashicorp/golang-lru v0.5.4
 	github.com/json-iterator/go v1.1.7
 	github.com/juju/ratelimit v1.0.1
@@ -32,11 +30,9 @@ require (
 	github.com/smallnest/valkeyrie v0.0.0-20191030065038-13edeca3d026
 	github.com/soheilhy/cmux v0.1.4
 	github.com/syndtr/goleveldb v1.0.0
-	github.com/tatsushid/go-fastping v0.0.0-20160109021039-d7bb493dee3e
-	github.com/valyala/fastrand v1.0.0
 	github.com/vmihailenco/msgpack v4.0.4+incompatible
 	go.opencensus.io v0.22.3
-	golang.org/x/sync v0.0.0-20200317015054-43a5402ce75a
+	golang.org/x/sync v0.0.0-20200317015054-43a5402ce75a // indirect
 	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
 	gopkg.in/yaml.v2 v2.2.8 // indirect
 )
