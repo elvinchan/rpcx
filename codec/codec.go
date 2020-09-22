@@ -2,7 +2,6 @@ package codec
 
 import (
 	"bytes"
-	"context"
 	"encoding/json"
 	"fmt"
 	"reflect"
@@ -10,8 +9,6 @@ import (
 	proto "github.com/gogo/protobuf/proto"
 	pb "github.com/golang/protobuf/proto"
 	"github.com/vmihailenco/msgpack"
-
-	"github.com/apache/thrift/lib/go/thrift"
 )
 
 // Codec defines the interface that decode/encode payload.
@@ -103,28 +100,4 @@ func (c MsgpackCodec) Decode(data []byte, i interface{}) error {
 	// dec.UseJSONTag(true)
 	err := dec.Decode(i)
 	return err
-}
-
-type ThriftCodec struct{}
-
-func (c ThriftCodec) Encode(i interface{}) ([]byte, error) {
-	b := thrift.NewTMemoryBufferLen(1024)
-	p := thrift.NewTBinaryProtocolFactoryDefault().GetProtocol(b)
-	t := &thrift.TSerializer{
-		Transport: b,
-		Protocol:  p,
-	}
-	t.Transport.Close()
-	return t.Write(context.Background(), i.(thrift.TStruct))
-}
-
-func (c ThriftCodec) Decode(data []byte, i interface{}) error {
-	t := thrift.NewTMemoryBufferLen(1024)
-	p := thrift.NewTBinaryProtocolFactoryDefault().GetProtocol(t)
-	d := &thrift.TDeserializer{
-		Transport: t,
-		Protocol:  p,
-	}
-	d.Transport.Close()
-	return d.Read(i.(thrift.TStruct), data)
 }
