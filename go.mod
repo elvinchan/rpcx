@@ -20,7 +20,6 @@ require (
 	github.com/kr/pretty v0.2.0
 	github.com/lucas-clemente/quic-go v0.15.5
 	github.com/mattn/go-isatty v0.0.12 // indirect
-	github.com/opentracing/opentracing-go v1.1.0
 	github.com/peterbourgon/g2s v0.0.0-20170223122336-d4e7ad98afea // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20200313005456-10cdbea86bc0
 	github.com/rs/cors v1.7.0
@@ -30,7 +29,6 @@ require (
 	github.com/soheilhy/cmux v0.1.4
 	github.com/syndtr/goleveldb v1.0.0
 	github.com/vmihailenco/msgpack v4.0.4+incompatible
-	go.opencensus.io v0.22.3
 	golang.org/x/sync v0.0.0-20200317015054-43a5402ce75a // indirect
 	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
 	gopkg.in/yaml.v2 v2.2.8 // indirect
