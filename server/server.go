@@ -66,11 +66,9 @@ type Server struct {
 	activeConn map[net.Conn]struct{}
 	doneChan   chan struct{}
 
-	ln                 net.Listener
-	readTimeout        time.Duration
-	writeTimeout       time.Duration
-	gatewayHTTPServer  *http.Server
-	DisableHTTPGateway bool // should disable http invoke or not.
+	ln           net.Listener
+	readTimeout  time.Duration
+	writeTimeout time.Duration
 
 	serviceMapMu sync.RWMutex
 	serviceMap   map[string]*service
@@ -170,7 +168,6 @@ func (s *Server) getDoneChan() <-chan struct{} {
 
 func (s *Server) startShutdownListener() {
 	go func(s *Server) {
-		log.Info("server pid:", os.Getpid())
 		c := make(chan os.Signal, 1)
 		signal.Notify(c, syscall.SIGTERM)
 		si := <-c
@@ -199,9 +196,6 @@ func (s *Server) Serve(network, address string) (err error) {
 		return nil
 	}
 
-	// try to start gateway
-	ln = s.startGateway(network, ln)
-
 	return s.serveListener(ln)
 }
 
@@ -213,9 +207,6 @@ func (s *Server) ServeListener(network string, ln net.Listener) (err error) {
 		s.serveByHTTP(ln, "")
 		return nil
 	}
-
-	// try to start gateway
-	ln = s.startGateway(network, ln)
 
 	return s.serveListener(ln)
 }
@@ -724,14 +715,6 @@ func (s *Server) Shutdown(ctx context.Context) error {
 				err = ctx.Err()
 				break outer
 			case <-ticker.C:
-			}
-		}
-
-		if s.gatewayHTTPServer != nil {
-			if err := s.closeHTTP1APIGateway(ctx); err != nil {
-				log.Warnf("failed to close gateway: %v", err)
-			} else {
-				log.Info("closed gateway")
 			}
 		}
 
